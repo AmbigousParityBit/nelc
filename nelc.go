@@ -12,13 +12,14 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	docopt "github.com/docopt/docopt-go"
 )
 
 var (
-	version = "1.3"
+	version = "1.4"
 	commit  string
 	branch  string
 )
@@ -49,7 +50,10 @@ func printInfo(extensions *countLinesTypeMap) {
 	fmt.Printf(":: nelc %s :: (c) AmbigousParityBit ::\n:: information about count of non empty lines in text files in given directory, searched recursively\n", version)
 	maxCountSize, maxExtSize, items, percent := 0, 0, 1, 0.
 	total, totalNonEmpty := 0, 0
+
+	var keys []string
 	for k, v := range *extensions {
+		keys = append(keys, k)
 		if len(k) > maxExtSize {
 			maxExtSize = len(k)
 		}
@@ -60,12 +64,15 @@ func printInfo(extensions *countLinesTypeMap) {
 			maxCountSize = v.nonEmpty
 		}
 	}
+	sort.Strings(keys)
+
 	maxExtSize++
 	maxCountSize = int(math.Floor(math.Log10(float64(maxCountSize)) + 1))
 	colsDiv := int(math.Floor(80./float64(maxExtSize+maxCountSize+8) + 1))
 	formatString := fmt.Sprintf("%s%v%s%v%s", "%", maxExtSize, "s %", maxCountSize, "d %3.0f%% ")
 
-	for k, v := range *extensions {
+	for _, k := range keys {
+		v := (*extensions)[k]
 		percent = 100. * float64(v.nonEmpty) / float64(v.nonEmpty+v.empty)
 		totalNonEmpty += v.nonEmpty
 		total += v.nonEmpty + v.empty
