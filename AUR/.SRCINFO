@@ -1,0 +1,16 @@
+pkgbase = nelc-git
+	pkgdesc = terminal application displaying information about count of non empty lines in text files in given directory, searched recursively
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/AmbigousParityBit/nelc
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = go
+	provides = nelc-git
+	conflicts = nelc-git
+	source = git+https://github.com/AmbigousParityBit/nelc
+	sha256sums = SKIP
+
+pkgname = nelc-git
+
