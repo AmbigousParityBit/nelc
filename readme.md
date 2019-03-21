@@ -27,7 +27,10 @@
 	nelc 
 	nelc <directory>
 	nelc -h | --help | --version
-
-# Options:
+## Options:
 	-h, --help  	Show help screen.
 	--version  	Show version.
+
+# Install
+
+You can download binary for i686 from releases, or install from AUR (ArchLinux).
