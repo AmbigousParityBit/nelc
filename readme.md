@@ -1,3 +1,5 @@
+# Example
+
 	:: nelc 1.4 :: (c) AmbigousParityBit ::
 	:: information about count of non empty lines in text files in given directory, searched recursively
 	               13122  77% |             .1  6067  98% |      .asciidoc   475  66% 
@@ -20,3 +22,12 @@
 	
 	
 	:: total 129748  86%
+
+# Usage:
+	nelc 
+	nelc <directory>
+	nelc -h | --help | --version
+
+# Options:
+  -h, --help  	Show help screen.
+  --version  	Show version.
