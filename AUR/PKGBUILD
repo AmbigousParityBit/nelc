@@ -1,11 +1,10 @@
 # Maintainer: AmbigousParityBit@gmx.com
 pkgname=nelc-git
-_github_name=nelc
 pkgver=1.4.0
 pkgrel=1
 pkgdesc='terminal application displaying information about count of non empty lines in text files in given directory, searched recursively'
 arch=('i686' 'x86_64')
-url="https://github.com/AmbigousParityBit/$_github_name"
+url="https://github.com/AmbigousParityBit/nelc"
 makedepends=(git go)
 provides=("$pkgname")
 conflicts=("$pkgname")
@@ -13,16 +12,16 @@ source=("git+$url")
 sha256sums=(SKIP)
 
 build() {
-	cd "$_github_name"
+	cd nelc
 	go build \
 		-gcflags "all=-trimpath=$PWD" \
 		-asmflags "all=-trimpath=$PWD" \
 		-ldflags "-extldflags $LDFLAGS" \
 		-v \
-		-o $_github_name .
+		-o nelc .
 }
 
 package() {
-	cd "$_github_name"
-	install -Dm755 $_github_name ${pkgdir}/usr/bin/$_github_name
+	cd nelc
+	install -Dm755 nelc ${pkgdir}/usr/bin/nelc
 }
