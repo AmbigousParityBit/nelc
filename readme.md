@@ -29,5 +29,5 @@
 	nelc -h | --help | --version
 
 # Options:
-  -h, --help  	Show help screen.
-  --version  	Show version.
+	-h, --help  	Show help screen.
+	--version  	Show version.
