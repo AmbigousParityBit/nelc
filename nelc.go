@@ -134,6 +134,7 @@ func scanDir(dir string, extensions *countLinesTypeMap) {
 					if _, exist := (*extensions)[ext]; exist {
 						count.empty += (*extensions)[ext].empty
 						count.nonEmpty += (*extensions)[ext].nonEmpty
+						(*extensions)[ext] = count
 					} else {
 						(*extensions)[ext] = count
 					}
